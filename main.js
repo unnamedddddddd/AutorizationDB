@@ -1,13 +1,11 @@
-function GetUserData() {
-   
-    let login = GetUserLogin()
-    let password = GetUserPassword()
+const GetUserData = () => {
+    const login = GetUserLogin()
+    const password = GetUserPassword()
 
-   AddUserDB(login, password)
-    
+    AddUserDB(login, password)
 }
 
-function AddUserDB(login, password) {
+const AddUserDB = (login, password) =>  {
     const UserData = {
         id: 1,
         login,
@@ -17,7 +15,7 @@ function AddUserDB(login, password) {
     console.table(UserData)
 }
 
-function GetUserLogin() {
+const GetUserLogin = () => {
     const login = document.getElementById("login").value.trim();
 
     if (!login) {
@@ -27,7 +25,7 @@ function GetUserLogin() {
     return login;
 }
 
-function GetUserPassword() {
+const GetUserPassword  = () => {
     const password = document.getElementById("password").value.trim();
     
     if (!password) {
