@@ -5,82 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
-  <!-- добавляем сам фреймворк mocha -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
-  <script>
-    // включаем режим тестирования в стиле BDD
-    mocha.setup('bdd');
-  </script>
-  <!-- добавим chai -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
-  <script>
-    // chai предоставляет большое количество функций. Объявим assert глобально
-    let assert = chai.assert;
-  </script>
-    <title>Login</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23C77DFF'/%3E%3Cstop offset='100%25' stop-color='%234c2d68'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8,16 C5,16 3,18 3,21 C3,24 5,26 8,26 L24,26 C27,26 29,24 29,21 C29,19 28,17.5 26.5,16.5 C27.5,15 27,13 25.5,12 C24,11 22,11.5 21,13 C19,12 16,12 13,16 C10,16 8,16 8,16 Z' fill='url(%23g)'/%3E%3C/svg%3E">    <title>Weather</title>
 </head>
 <body class="gradient-element">
-    <div class="userData">
-        <form >
-            <div class="field-group">
-                <label for="login">Login</label>
-                <input type="text" id="login" name="login" autocomplete="username" placeholder="Login">
+    <header class="NameSite">Weather</header>
+    <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#C77DFF" />
+        <stop offset="100%" stop-color="#4c2d68" />
+        </linearGradient>
+    </defs>
+  <path
+    d="M15,24 C10,24 6,28 6,33 C6,38 10,42 15,42 L33,42 C38,42 42,38 42,33 C42,30 40,27 37,25 C39,22 38,18 35,16 C32,14 28,15 26,18 C23,16 19,16 15,24 Z"
+    fill="url(#grad)"
+    opacity="0.9"
+  />
+</svg>
+     <!-- <div class="alert">
+        <span class="close-btn" onclick="this.parentElement.style.display='none';">
+            &times;
+        </span>
+        Уведомление
+     </div> -->
+     <div class="form-container">
+        <div class="userData">
+                <form >
+                    <div class="field-group">
+                        <label for="login">Login</label>
+                        <input type="text" id="login" name="login" autocomplete="username" placeholder="Login">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Password">
+                    </div>
+                    <div class="avs">
+                        <input type="checkbox" id="cbx" style="display: none;">
+                        <label for="cbx" class="check">
+                            <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                <polyline points="1 9 7 14 15 4"></polyline>
+                            </svg>
+                        </label>
+                        <label for="cbx" class="remember-user">Запомнить?</label>
+                        <a href="#" class="forgot-password">Забыли пароль?</a>
+                        </div>
+                    <!-- <div class="remember-user">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Запомнить?</label>
+                    </div> -->
+        <!-- From Uiverse.io by mrhyddenn --> 
+                    <button type="button" id="sign-in" onclick="GetUserData()">sign in</button>
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="another-entrance">
+                        <a href="https://www.drawio.com" class="social-btn github">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                                </svg>
+                        </a>
+                        <a href="https://www.drawio.com" class="social-btn google">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </form>
             </div>
-
-            <div class="field-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Password">
-            </div>
-            <div class="avs">
-                  <input type="checkbox" id="cbx" style="display: none;">
-                  <label for="cbx" class="check">
-                    <svg width="18px" height="18px" viewBox="0 0 18 18">
-                        <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                        <polyline points="1 9 7 14 15 4"></polyline>
-                    </svg>
-                </label>
-                    <a href="#" class="forgot-password">Забыли пароль?</a>
-                </div>
-            <!-- <div class="remember-user">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Запомнить?</label>
-            </div> -->
-<!-- From Uiverse.io by mrhyddenn --> 
-            <div class="container">
-
-            </div>
-            <button type="submit">sign in</button>
-
-            <div class="another-entrance">
-                <a href="https://www.drawio.com" class="social-btn github">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                    </svg>
-                </a>
-                <a href="https://www.drawio.com" class="social-btn google">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
-                    </svg>
-                </a>
-            </div>
-        </form>
-    </div>
-    <script src="main.js"></script>
-    <script>
-    function pow(x, n) {
-      /* Здесь будет реализация функции, пока пусто */
-    }
-  </script>
-
-  <!-- скрипт со спецификацией (describe, it...) -->
-  <script src="test.js"></script>
-
-  <!-- элемент с id="mocha" будет содержать результаты тестов -->
-  <div id="mocha"></div>
-
-  <!-- запускаем тесты! -->
-  <script>
-    mocha.run();
-  </script>
+     </div>
+    
+    <script src="main.js" ></script>
+   
 </body>
 </html>
