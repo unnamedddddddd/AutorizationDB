@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="createUser.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23C77DFF'/%3E%3Cstop offset='100%25' stop-color='%234c2d68'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8,16 C5,16 3,18 3,21 C3,24 5,26 8,26 L24,26 C27,26 29,24 29,21 C29,19 28,17.5 26.5,16.5 C27.5,15 27,13 25.5,12 C24,11 22,11.5 21,13 C19,12 16,12 13,16 C10,16 8,16 8,16 Z' fill='url(%23g)'/%3E%3C/svg%3E">    <title>Weather</title>
+</head>
+<body class="gradient-element">
+    <header class="NameSite">Weather</header>
+    <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#C77DFF" />
+        <stop offset="100%" stop-color="#4c2d68" />
+        </linearGradient>
+    </defs>
+    <path
+        d="M15,24 C10,24 6,28 6,33 C6,38 10,42 15,42 L33,42 C38,42 42,38 42,33 C42,30 40,27 37,25 C39,22 38,18 35,16 C32,14 28,15 26,18 C23,16 19,16 15,24 Z"
+        fill="url(#grad)"
+        opacity="0.9"
+    />
+    </svg>
+        <div class="form-container">
+            <div class="userData">
+                <form >
+                    <div class="field-group">
+                        <label for="login">Login</label>
+                        <input type="text" id="login" name="login" autocomplete="username" placeholder="Login">
+                    </div>
+                    <div class="field-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Password">
+                    </div>         
+                    <button type="button" id="sign-in" onclick="createUser()">create profile</button>              
+                </form>
+            </div>       
+    <script src="createUser.js" ></script>
+</body>
+</html>
