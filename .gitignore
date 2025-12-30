@@ -15,3 +15,6 @@ dist-ssr
 
 .env
 .DS_Store
+
+.eslintrc
+.eslintcache 
