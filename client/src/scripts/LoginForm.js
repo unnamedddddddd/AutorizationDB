@@ -1,18 +1,17 @@
+import { API_BASE_URL } from "../config";
+
 async function getUserInfo(login, password) {
 
-  const response = await fetch('http://localhost:5000/api/login', {
+  const response = await fetch(`${API_BASE_URL}/api/login`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json' },
     body: JSON.stringify({login, password})
   })
   
   const data = await response.json();
-  if (data.success) {
-    alert(`Вход выполнен ${login} `)
-  } else {
-    alert(`Ошибка ${data.message}`)
-  }
-  return data.success;
+  if (!data.success) alert(`Ошибка ${data.message}`)
+  
+  return data;
 }
 
-export default getUserInfo;
+export default getUserInfo; 

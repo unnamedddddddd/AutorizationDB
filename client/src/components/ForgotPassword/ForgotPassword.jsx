@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './ForgotPassword.css'
 import forgotPassword from "../../scripts/ForgotPassword";
 
@@ -26,39 +26,53 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <div className="form-container-forgot" >
-        <form className="form-forgot" onSubmit={handleSubmit}>
-          <div className="login-container">
-            <label htmlFor="password" className="label-login">Login</label>
-            <input 
-              type="text" 
-              className="login" 
-              placeholder="Login"
-              onChange={e => setLogin(e.target.value)}
-            />
-          </div>
-          <div className="password-container">
-            <label htmlFor="password" className="label-password">Password</label>
-            <input 
-              type="password" 
-              className="password" 
-              placeholder="Password"
-              onChange={e => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="repeatPassword-container">
-            <label htmlFor="repeat-password" className="label-password">Repeat password</label>
-            <input 
-              type="password" 
-              className="repeat-password" 
-              placeholder="Repeat password"
-              onChange={e => setRepeatPassword(e.target.value)}
-            />
-          </div>
-          <button type="submit" className='confirm-button' disabled={isDisabled}>Confirm password</button>
-        </form>
+      <div className="forgot-page">
+        <div className="form-container-forgot" >
+          <form className="form-forgot" onSubmit={handleSubmit}>
+            <Link 
+              to="/login" 
+              style={{
+                display: 'block',
+                textAlign: 'right',
+                color: '#A090B8',
+                fontSize: '16px',
+                textDecoration: 'none',
+                justifyContent: 'flex-end',
+              }}
+              >←Назад
+              </Link>
+            <div className="login-container">
+              <label htmlFor="password" className="label-login">Login</label>
+              <input 
+                type="text" 
+                className="login" 
+                placeholder="Login"
+                onChange={e => setLogin(e.target.value)}
+              />
+            </div>
+            <div className="password-container">
+              <label htmlFor="password" className="label-password">Password</label>
+              <input 
+                type="password" 
+                className="password" 
+                placeholder="Password"
+                onChange={e => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="repeatPassword-container">
+              <label htmlFor="repeat-password" className="label-password">Repeat password</label>
+              <input 
+                type="password" 
+                className="repeat-password" 
+                placeholder="Repeat password"
+                onChange={e => setRepeatPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit" className='confirm-button' disabled={isDisabled}>Confirm password</button>
+          </form>
+        </div>
       </div>
-      </>
+    </>
   );
 }
 

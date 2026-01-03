@@ -1,26 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: linear-gradient(-45deg, #10002B, #3C096C, #4c2d68, #10002B);
+.register-page {
+  min-height: 100vh;
   background-size: 400% 400%;
   color: #E0D6FF;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  min-height: 100vh;
   padding: 20px;
-  animation: gradient 15s ease infinite;
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.form-container {
+.register-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,12 +14,12 @@ body {
   width: 100%;
 }
 
-.userData {
+.register-userData {
   width: 100%;
   max-width: 400px;
 }
 
-form {
+.register-form {
   background: rgba(35, 24, 48, 0.85);
   padding: 40px 32px;
   border-radius: 20px;
@@ -46,18 +32,18 @@ form {
       inset 0 0 20px rgba(199, 125, 255, 0.05);
 }
 
-.field-group {
+.register-field-group {
   margin-bottom: 7px;
 }
 
-.field-group label {
+.register-field-group label {
   display: block;
   color: #A090B8;
   font-size: 14px;
   padding: 6px;
 }
 
-.field-group input {
+.register-field-group input {
   width: 100%;
   padding: 14px 16px;
   background: rgba(45, 34, 61, 0.7);
@@ -68,14 +54,14 @@ form {
   transition: all 0.3s ease;
 }
 
-.field-group input:focus {
+.register-field-group input:focus {
   outline: none;
   border-color: #C77DFF;
   box-shadow: 0 0 0 3px rgba(199, 125, 255, 0.1);
   background: rgba(45, 34, 61, 0.9);
 }
 
-.auth-button {
+.register-auth-button {
   width: 100%;
   padding: 12px;
   background-color: #2D223D;
@@ -92,14 +78,24 @@ form {
   display: block;
 }
 
-.auth-button:hover {
+.register-auth-button:hover {
   background-color: #3A2F4D;
   border-color: #5D4A82;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.auth-button:active {
+.register-auth-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-link {
+  color: #A090B8;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
 }

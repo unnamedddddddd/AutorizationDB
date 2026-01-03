@@ -10,7 +10,6 @@ const RegisterForm  = () => {
   const navigate = useNavigate(); 
   const isDisabled = !login.trim() || !password.trim();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,53 +20,58 @@ const RegisterForm  = () => {
   }
 
   return (
-    <>
-      <div className="form-container">  
-          <div className="userData"> 
-              <form onSubmit={handleSubmit}>
-                <div className="field-group">
-                    <label htmlFor="login">Login</label>  
-                    <input 
-                      type="text" 
-                      id="login"
-                      name="login" 
-                      autoComplete="username"
-                      placeholder="Login"
-                      value={login}
-                      onChange={e => setLogin(e.target.value)}
-                    />
-                </div>
-                <div className="field-group"> 
-                    <label htmlFor="password">Password</label> 
-                    <input 
-                      type="password" 
-                      id="password" 
-                      name="password"
-                      autoComplete="current-password" 
-                      placeholder="Password"
-                      value={password}
-                      onChange={e => setPassword(e.target.value)}
-                    />
-                </div>      
-                <div style={{ textAlign: 'right', marginBottom: '15px' }}>
-                  <Link 
-                      to="/login" 
-                      style={{
-                        textAlign: 'right',
-                          color: '#A090B8',
-                          fontSize: '16px',
-                          textDecoration: 'none',
-                          justifyContent: 'flex-end',
-                          marginBottom:'15px'
-                      }}
-                      >Есть аккаунт?
-                  </Link>
-                </div>
-              <button type="submit" className="auth-button" disabled={isDisabled}>create profile</button>              
-            </form>
-          </div>
+    <div className="register-page">
+      <div className="register-container">  
+        <div className="register-userData"> 
+          <form className="register-form" onSubmit={handleSubmit}>
+            <div className="register-field-group">
+              <label htmlFor="login">Login</label>  
+              <input 
+                type="text" 
+                id="login"
+                name="login" 
+                autoComplete="username"
+                placeholder="Login"
+                value={login}
+                onChange={e => setLogin(e.target.value)}
+              />
+            </div>
+            <div className="register-field-group"> 
+              <label htmlFor="password">Password</label> 
+              <input 
+                type="password" 
+                id="password" 
+                name="password"
+                autoComplete="current-password" 
+                placeholder="Password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+            </div>      
+            <div style={{ textAlign: 'right', marginBottom: '15px' }}>
+              <Link 
+                to="/login" 
+                className="register-link"
+                style={{
+                  fontSize: '16px',
+                  textDecoration: 'none',
+                  justifyContent: 'flex-end',
+                }}
+              >
+                Есть аккаунт?
+              </Link>
+            </div>
+            <button 
+              type="submit" 
+              className="register-auth-button" 
+              disabled={isDisabled}
+            >
+              create profile
+            </button>              
+          </form>
+        </div>
       </div>       
-    </>
+    </div>
   );
 }
 
