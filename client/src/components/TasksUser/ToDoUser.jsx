@@ -31,6 +31,11 @@ const ToDoUser = () => {
       setTasks(data.tasks); 
     } else {
       console.error('Ошибка загрузки задач:', data.message);
+      if (data.message?.includes('токен') || data.message?.includes('authorization')) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/login');
+      }
       setTasks([]);
     }
   };
