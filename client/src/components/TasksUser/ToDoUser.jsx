@@ -13,13 +13,13 @@ const ToDoUser = () => {
   const [tasks, setTasks] = useState([]);
   const [textTask, setTextTask] = useState('');
   const navigate = useNavigate();
-
+  const token = localStorage.getItem('token');
   useEffect(() => {
     loadTasks();
   }, []);
 
   const loadTasks = async () => {
-    const token = localStorage.getItem('token');
+    
     const userId = localStorage.getItem('userId');
     if (!userId || !token) {
       navigate('/login');
