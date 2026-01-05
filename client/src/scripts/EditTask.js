@@ -1,6 +1,6 @@
 import { API_BASE_URL } from "../config";
 
-const EditTask = async (taskEdit) => {
+const EditTask = async (taskEdit, token) => {
   const response = await fetch(`${API_BASE_URL}/api/todo/edit`, {
     method: 'POST',
     headers: { 

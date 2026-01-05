@@ -9,12 +9,9 @@ async function getUserInfo(login, password) {
   })
   
   const data = await response.json();
-   if (data.success) {
-    localStorage.setItem('token', data.token);
-  } else {
-    alert(`Ошибка: ${data.message}`);
-  }
-   return data;
+  if (!data.success) alert(`Ошибка ${data.message}`)
+  
+  return data;
 }
 
 export default getUserInfo; 

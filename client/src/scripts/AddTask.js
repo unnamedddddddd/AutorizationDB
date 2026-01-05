@@ -1,9 +1,12 @@
 import { API_BASE_URL } from "../config";
 
-const AddTask = async (newTask) => {
+const AddTask = async (newTask, token) => {
   const response = await fetch(`${API_BASE_URL}/api/todo`, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
     body: JSON.stringify(newTask)
   })
 

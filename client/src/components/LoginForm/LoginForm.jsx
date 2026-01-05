@@ -26,8 +26,8 @@ const LoginForm = () => {
 
         const data = await getUserInfo(login.trim(), password.trim()); 
         if (data.success) {
-        localStorage.setItem('userId', data.user.id);
-        
+            localStorage.setItem('userId', data.user.id);
+            localStorage.setItem('token', data.token);
         if (rememberMe) {
             localStorage.setItem('rememberUser', JSON.stringify({
                 login: data.user.login,

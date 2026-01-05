@@ -19,13 +19,14 @@ const ToDoUser = () => {
   }, []);
 
   const loadTasks = async () => {
+    const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-    if (!userId) {
+    if (!userId || !token) {
       navigate('/login');
       return;
     }
 
-    const data = await getUserTasks(userId);
+    const data = await getUserTasks(userId, token);
     if (data.success) {
       setTasks(data.tasks); 
     } else {
@@ -49,7 +50,7 @@ const ToDoUser = () => {
       text: textTask.trim(),
     };
 
-    const data = await AddTask(newTask);
+    const data = await AddTask(newTask, token);
     if (data.success && data.newTask) {
       setTasks([...tasks, data.newTask]);
       setTextTask('');
@@ -57,7 +58,7 @@ const ToDoUser = () => {
   };  
 
   const deleteTask = async taskId => {
-    const data = await DeleteTask(taskId);
+    const data = await DeleteTask(taskId, token);
     if (data.success) {
       setTasks(tasks.filter(task => task.task_id !== taskId));
     } 
@@ -71,7 +72,7 @@ const editTask = async taskId => {
         return;
       }
     
-      const data = await EditTask({ taskId, newTaskName: newTaskName.trim() });
+      const data = await EditTask({ taskId, newTaskName: newTaskName.trim() }, token);
       if (data.success) {
         setTasks(prev => prev.map(task => 
           task.task_id === taskId 

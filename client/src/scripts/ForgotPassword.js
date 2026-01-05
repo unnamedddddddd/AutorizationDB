@@ -1,6 +1,6 @@
 import { API_BASE_URL } from "../config";
 
-const forgotPassword = async (login,newPassword) => {
+const forgotPassword = async (login, newPassword) => {
   const response = await fetch(`${API_BASE_URL}/api/forgotPassword`,{
     method: 'POST',
     headers: {'Content-Type': 'application/json' },

@@ -1,6 +1,6 @@
 import { API_BASE_URL } from "../config";
 
-async function DeleteTask(taskId) {
+async function DeleteTask(taskId, token) {
   const response = await fetch(`${API_BASE_URL}/api/todo/delete/${taskId}`, {
     method: 'DELETE',
     headers: { 
