@@ -103,7 +103,10 @@ const editTask = async taskId => {
       (a.created_at || '').localeCompare(b.created_at || '')
     ));
   };
-
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleDateString('ru-RU') + ' ' + date.toLocaleTimeString('ru-RU');
+  };
   return (
     <div className="todo-page">
       <div className="todo-container">
@@ -130,7 +133,7 @@ const editTask = async taskId => {
                 <Task
                   key={task.task_id}
                   text={task.task_name || task.text}
-                  time={task.created_at}
+                  time={formatDate(task.created_at)}
                   id={task.task_id}
                   onEdit={() => editTask(task.task_id)}
                   onDelete={() => deleteTask(task.task_id)}
