@@ -2,6 +2,7 @@ import { useState } from "react";
 import getUserInfo from "../../scripts/LoginForm.js";
 import { Link, useNavigate } from 'react-router-dom'
 import './LoginForm.css';
+import InputPassword from "../InputPassword.jsx";
 
 const LoginForm = () => {
     const [login, setLogin] = useState(() => {
@@ -60,12 +61,9 @@ const LoginForm = () => {
                         
                         <div className="login-field-group">
                             <label htmlFor="password">Password</label>
-                            <input 
-                                type="password" 
+                            <InputPassword
                                 id="password" 
                                 name="password" 
-                                autoComplete="current-password" 
-                                placeholder="Password"
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                             />

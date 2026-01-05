@@ -1,6 +1,7 @@
 import { useState } from 'react'  
 import { useNavigate } from 'react-router-dom'  
 import createUser from '../../scripts/CreateUser';
+import InputPassword from "../InputPassword.jsx";
 import { Link } from 'react-router-dom'
 import './Register.css'
 
@@ -38,15 +39,12 @@ const RegisterForm  = () => {
             </div>
             <div className="register-field-group"> 
               <label htmlFor="password">Password</label> 
-              <input 
-                type="password" 
+              <InputPassword
                 id="password" 
-                name="password"
-                autoComplete="current-password" 
-                placeholder="Password"
+                name="password" 
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-              />
+            />
             </div>      
             <div style={{ textAlign: 'right', marginBottom: '15px' }}>
               <Link 
