@@ -156,6 +156,7 @@ const ToDoUser = () => {
                   id={task.task_id}
                   onEdit={() => editTask(task.task_id)}
                   onDelete={() => deleteTask(task.task_id)}
+                  onDone={() => doneTask(task.task_id)}
                 />
               ))}
             </ul>
