@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getUserInfo from "../../scripts/LoginForm.js";
 import { Link, useNavigate } from 'react-router-dom'
 import './LoginForm.css';
@@ -31,15 +31,19 @@ const LoginForm = () => {
         if (rememberMe) {
             localStorage.setItem('rememberUser', JSON.stringify({
                 login: data.user.login,
-                password: password
+                password
             }));
         } else {
             localStorage.removeItem('rememberUser');
         }
-        
         navigate('/todo');
         }
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) navigate('/todo');
+    }, []);
 
     return (
         <div className="auth-page">

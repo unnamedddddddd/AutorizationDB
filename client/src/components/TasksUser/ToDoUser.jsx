@@ -19,7 +19,6 @@ const ToDoUser = () => {
   }, []);
 
   const loadTasks = async () => {
-    
     const userId = localStorage.getItem('userId');
     if (!userId || !token) {
       navigate('/login');
@@ -64,28 +63,28 @@ const ToDoUser = () => {
     } 
   };
 
-const editTask = async taskId => {
-  for (const task of tasks) {
-    if (task.task_id === taskId) {
-      const newTaskName = prompt('Введите новую задачу', task.task_name);
-      if (newTaskName === null || newTaskName.trim() === '') {
-        return;
+  const editTask = async taskId => {
+    for (const task of tasks) {
+      if (task.task_id === taskId) {
+        const newTaskName = prompt('Введите новую задачу', task.task_name);
+        if (newTaskName === null || newTaskName.trim() === '') {
+          return;
+        }
+      
+        const data = await EditTask({ taskId, newTaskName: newTaskName.trim() }, token);
+        if (data.success) {
+          setTasks(prev => prev.map(task => 
+            task.task_id === taskId 
+              ? { ...task, task_name: newTaskName.trim() } 
+              : task
+          ));
+        } else {
+          alert(`Ошибка: ${data.message}`);
+        }
+        break; 
       }
-    
-      const data = await EditTask({ taskId, newTaskName: newTaskName.trim() }, token);
-      if (data.success) {
-        setTasks(prev => prev.map(task => 
-          task.task_id === taskId 
-            ? { ...task, task_name: newTaskName.trim() } 
-            : task
-        ));
-      } else {
-        alert(`Ошибка: ${data.message}`);
-      }
-      break; 
     }
-  }
-};
+  };
   
   const sortAZ = () => {
     setTasks([...tasks].sort((a, b) => 
@@ -104,10 +103,12 @@ const editTask = async taskId => {
       (a.created_at || '').localeCompare(b.created_at || '')
     ));
   };
+
   const formatDate = (isoString) => {
     const date = new Date(isoString);
     return date.toLocaleDateString('ru-RU') + ' ' + date.toLocaleTimeString('ru-RU');
   };
+  
   return (
     <div className="todo-page">
       <div className="todo-container">
