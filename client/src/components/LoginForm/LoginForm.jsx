@@ -41,11 +41,8 @@ const LoginForm = () => {
     }
 
     useEffect(() => {
-        if (!localStorage.getItem('token')) {
-            navigate('/login');
-        } else {
-            loadTasks();
-        }
+        const token = localStorage.getItem('token');
+        if (token) navigate('/todo');
     }, []);
 
     return (
