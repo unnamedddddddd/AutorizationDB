@@ -320,3 +320,10 @@
   font-size: 16px;
   opacity: 0.7;
 }
+.logout-button{
+  display: flex;
+  text-align: right;
+  background-color: #A090B8;
+  font-size: '16px';
+  justify-content: flex-end;
+}

@@ -20,10 +20,10 @@ const LoginForm = () => {
         if (data.success) {
             localStorage.setItem('userId', data.user.id);
             localStorage.setItem('token', data.token);
-            localStorage.setItem('refreshToken', data?.tokenRememberMe);
+            console.log(data?.tokenRememberMe);
         } 
-        if (rememberMe && data.tokenRememberMe) {
-            localStorage.setItem('refreshToken', data.tokenRememberMe);
+        if (rememberMe) {
+            localStorage.setItem('refreshToken', data?.tokenRememberMe);
         } else {
             localStorage.removeItem('refreshToken');
         }
@@ -34,6 +34,7 @@ const LoginForm = () => {
         const checkAuth = async () => {
             try {
                 const refreshToken = localStorage.getItem('refreshToken');
+                console.log(refreshToken);
                 if (refreshToken){ 
                     const data = await CreateToken(refreshToken);
                     if (data.success) {
@@ -42,6 +43,8 @@ const LoginForm = () => {
                     } else {
                         localStorage.removeItem('refreshToken');
                         localStorage.removeItem('token');
+                        localStorage.removeItem('userId');
+                        console.error(data.message)
                     }
                 }
             } catch (error) {
@@ -68,7 +71,6 @@ const LoginForm = () => {
                                 onChange={e => setLogin(e.target.value)}
                             />
                         </div>
-                        
                         <div className="login-field-group">
                             <label htmlFor="password">Password</label>
                             <InputPassword

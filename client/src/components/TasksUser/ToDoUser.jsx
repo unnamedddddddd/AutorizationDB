@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 import './TasksUser.css';
 import Task from '../Task';
 import Button from '../Button';
@@ -128,6 +128,23 @@ const ToDoUser = () => {
   return (
     <div className="todo-page">
       <div className="todo-container">
+         <Link 
+              to="/login" 
+              style={{
+                display: 'block',
+                textAlign: 'right',
+                color: '#A090B8',
+                fontSize: '16px',
+                textDecoration: 'none',
+                justifyContent: 'flex-end',
+              }}
+              onClick={() => { 
+                localStorage.removeItem('userId');
+                localStorage.removeItem('token');
+                localStorage.removeItem('refreshToken');
+              }}
+              >← Выйти из аккаунта
+        </Link>
         <div className="todo-content">
           <form className="todo-form" onSubmit={(e) => { e.preventDefault(); addTask(); }}>
             <div className="input-task">
