@@ -20,21 +20,22 @@ const LoginForm = () => {
         if (data.success) {
             localStorage.setItem('userId', data.user.id);
             localStorage.setItem('token', data.token);
-            console.log(data?.tokenRememberMe);
-        } 
-        if (rememberMe) {
-            localStorage.setItem('refreshToken', data?.tokenRememberMe);
+            
+            if (rememberMe && data?.tokenRememberMe) {
+                localStorage.setItem('refreshToken', data?.tokenRememberMe);
+            } else {
+                localStorage.removeItem('refreshToken');
+            }
+            navigate('/todo');
         } else {
-            localStorage.removeItem('refreshToken');
+            console.error('Ошибка:', data.message);
         }
-        navigate('/todo');
     }
 
     useEffect(() => {
         const checkAuth = async () => {
             try {
                 const refreshToken = localStorage.getItem('refreshToken');
-                console.log(refreshToken);
                 if (refreshToken){ 
                     const data = await CreateToken(refreshToken);
                     if (data.success) {
@@ -42,8 +43,6 @@ const LoginForm = () => {
                         navigate('/todo');
                     } else {
                         localStorage.removeItem('refreshToken');
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('userId');
                         console.error(data.message)
                     }
                 }
