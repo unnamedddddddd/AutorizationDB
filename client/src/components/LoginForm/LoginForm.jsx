@@ -3,20 +3,12 @@ import getUserInfo from "../../scripts/LoginForm.js";
 import { Link, useNavigate } from 'react-router-dom'
 import './LoginForm.css';
 import InputPassword from "../InputPassword.jsx";
+import CreateToken from "../../scripts/CreateToken.js";
 
 const LoginForm = () => {
-    const [login, setLogin] = useState(() => {
-       const savedUser = JSON.parse(localStorage?.getItem('rememberUser'));
-       return savedUser ? savedUser.login : ''
-    });
-    const [password, setPassword] =  useState(() => {   
-       const savedUser = JSON.parse(localStorage?.getItem('rememberUser'));
-       return savedUser ? savedUser.password : ''
-    });
-    const [rememberMe, setRememberMe] = useState(() => {
-        const savedUser = JSON.parse(localStorage?.getItem('rememberUser'));
-        return savedUser ? true : false
-    });
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
 
     const isDisabled = !login.trim() || !password.trim();
     const navigate = useNavigate();
@@ -24,26 +16,40 @@ const LoginForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = await getUserInfo(login.trim(), password.trim()); 
+        const data = await getUserInfo(login.trim(), password.trim(), rememberMe); 
         if (data.success) {
             localStorage.setItem('userId', data.user.id);
             localStorage.setItem('token', data.token);
-        if (rememberMe) {
-            localStorage.setItem('rememberUser', JSON.stringify({
-                login: data.user.login,
-                password
-            }));
+            localStorage.setItem('refreshToken', data?.tokenRememberMe);
+        } 
+        if (rememberMe && data.tokenRememberMe) {
+            localStorage.setItem('refreshToken', data.tokenRememberMe);
         } else {
-            localStorage.removeItem('rememberUser');
+            localStorage.removeItem('refreshToken');
         }
         navigate('/todo');
-        }
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) navigate('/todo');
-    }, []);
+        const checkAuth = async () => {
+            try {
+                const refreshToken = localStorage.getItem('refreshToken');
+                if (refreshToken){ 
+                    const data = await CreateToken(refreshToken);
+                    if (data.success) {
+                        localStorage.setItem('token', data.token);
+                        navigate('/todo');
+                    } else {
+                        localStorage.removeItem('refreshToken');
+                        localStorage.removeItem('token');
+                    }
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        };
+    checkAuth();
+    }, [navigate]);
 
     return (
         <div className="auth-page">
