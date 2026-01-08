@@ -231,7 +231,7 @@
   opacity: 1;
 }
 
-@media (max-width: 390px ) {
+@media (max-width: 400px ) {
   .login-remember-user {
     margin-left: -50px;
   }
