@@ -259,21 +259,23 @@
 
 @media (max-width: 400px ) {
   .todo-form {
-    padding: 12px;
+    padding: 14px;
   }
 
   .input-task {
-    gap: 10px;
+    gap: 8px;
   }
 
   .text-task {
-    padding: 4px;
-    font-size: 13px;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 12px;
   }
 
   .btn-add {
-    padding: 8px 17px;
-    font-size: 13px !important;;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
   }
 
   .logout {
