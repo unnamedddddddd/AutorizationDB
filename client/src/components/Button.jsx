@@ -14,7 +14,8 @@ const Button = ({
       border: 'none',
       borderRadius: '6px',
       cursor: 'pointer',
-      transition: 'background-color 0.2s ease'
+      transition: 'background-color 0.2s ease',
+      fontSize: '14px'
     },
     delete: {
       padding: '6px 10px',

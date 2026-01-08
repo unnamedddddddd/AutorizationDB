@@ -230,3 +230,9 @@
 .hidePassword:hover {
   opacity: 1;
 }
+
+@media (max-width: 390px ) {
+  .login-remember-user {
+    margin-left: -50px;
+  }
+}

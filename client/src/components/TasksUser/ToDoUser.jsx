@@ -129,21 +129,12 @@ const ToDoUser = () => {
     <div className="todo-page">
       <div className="todo-container">
          <Link 
-              to="/login" 
-              style={{
-                display: 'block',
-                textAlign: 'right',
-                color: '#A090B8',
-                fontSize: '16px',
-                textDecoration: 'none',
-                justifyContent: 'flex-end',
-              }}
-              onClick={() => { 
-                localStorage.removeItem('userId');
-                localStorage.removeItem('token');
-                localStorage.removeItem('refreshToken');
-              }}
-              >← Выйти из аккаунта
+            className='logout'
+            to="/login" 
+            onClick={() => { 
+              localStorage.clear();
+            }}
+            >← Выйти из аккаунта
         </Link>
         <div className="todo-content">
           <form className="todo-form" onSubmit={(e) => { e.preventDefault(); addTask(); }}>
@@ -161,8 +152,8 @@ const ToDoUser = () => {
             </div>
           </form>
           <div className="todo-tasks">
-            <Option onSortAZ={sortAZ} onSortZA={sortZA} onSortTime={sortTime}/>
             <div className="tasks-label">Ваши задачи</div>
+            <Option onSortAZ={sortAZ} onSortZA={sortZA} onSortTime={sortTime}/>
             <ul className="tasks-list">
               {tasks.map(task => (
                 <Task
