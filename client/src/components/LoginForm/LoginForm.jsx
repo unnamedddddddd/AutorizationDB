@@ -56,7 +56,7 @@ const LoginForm = () => {
     const authGitHub = () => {
         const params = new URLSearchParams({
             client_id: 'Ov23liKGhshz0L9biI8I',
-            redirect_uri: 'http://localhost:5173/login/github/callback',
+            redirect_uri: 'https://autorization-db.vercel.app/login/github/callback',
             scope: 'user:email'
         });
   
