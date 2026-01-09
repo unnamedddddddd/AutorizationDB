@@ -7,15 +7,6 @@ import ToDoUser from './components/TasksUser/ToDoUser.jsx'
 import CreateUserFromGitHub from './components/GitHub_Auth/GitHubAuth.jsx'
 
 function App() {
-  useEffect(() => {
-    if (window.location.hash) {
-      const hashPath = window.location.hash.substring(1);
-      if (hashPath.startsWith('/login/github/callback')) {
-        navigate(hashPath);
-      }
-    }
-  }, [navigate]);
-
   return (
     <>
       <Routes>
