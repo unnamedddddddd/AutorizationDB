@@ -15,11 +15,10 @@ function App() {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/todo" element={<ToDoUser />} />
-        <Route path="/login/github/callback" element={<CreateUserFromGitHub/>} />
+        <Route path="/#/login/github/callback" element={<CreateUserFromGitHub/>} />
       </Routes>
     </>
   )
 }
 
 export default App
-  
