@@ -56,7 +56,7 @@ const LoginForm = () => {
     const authGitHub = () => {
         const params = new URLSearchParams({
             client_id: 'Ov23liKGhshz0L9biI8I',
-            redirect_uri: 'https://todo-frontend-cd34.onrender.com/login/github/callback',
+            redirect_uri: 'https://todo-frontend-cd34.onrender.com/#/login/github/callback',
             scope: 'user:email'
         });
   
