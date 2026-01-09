@@ -17,4 +17,4 @@ async function createUser(login, password) {
   return data.success;
 }
 
-export default createUser;
+export default createUser;  

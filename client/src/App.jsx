@@ -4,6 +4,7 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword.jsx'
 import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom' 
 import ToDoUser from './components/TasksUser/ToDoUser.jsx'
+import CreateUserFromGitHub from './components/GitHub_Auth/GitHubAuth.jsx'
 
 function App() {
   return (
@@ -14,9 +15,11 @@ function App() {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/todo" element={<ToDoUser />} />
+        <Route path="/login/github/callback" element={<CreateUserFromGitHub/>} />
       </Routes>
     </>
   )
 }
 
 export default App
+  
